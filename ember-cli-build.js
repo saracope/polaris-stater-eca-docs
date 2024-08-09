@@ -4,12 +4,22 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = function (defaults) {
   const app = new EmberApp(defaults, {
-    // Add options here
+    autoImport: {
+      webpack: {
+        resolve: {
+          alias: {
+            fs: 'empty' },
+        },
+      },
+    },
     'ember-cli-babel': {
       enableTypeScriptTransform: true,
       // turn off the old transform
       // (for this to work when using Embroider you need https://github.com/embroider-build/embroider/pull/1673)
       disableDecoratorTransforms: true,
+    },
+    'ember-cli-addon-docs': {
+      documentingAddonAt: '../../Projects/design-system/@heroku/design-system',
     },
     babel: {
       plugins: [
